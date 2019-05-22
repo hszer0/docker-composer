@@ -18,7 +18,9 @@ memory_limit=-1\n\
 opcache.enable_cli=1\n\
 " > $PHP_INI_DIR/php-cli.ini
 
-RUN pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug
+RUN apk add --no-cache $PHPIZE_DEPS \
+    && pecl install xdebug-2.7.2 \
+    && docker-php-ext-enable xdebug
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
