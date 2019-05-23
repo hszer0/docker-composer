@@ -18,13 +18,6 @@ memory_limit=-1\n\
 opcache.enable_cli=1\n\
 " > $PHP_INI_DIR/php-cli.ini
 
-RUN apk add --no-cache $PHPIZE_DEPS \
-    && pecl install xdebug-2.7.2 \
-    && docker-php-ext-enable xdebug \
-    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
-
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
 ENV COMPOSER_VERSION 1.8.5
