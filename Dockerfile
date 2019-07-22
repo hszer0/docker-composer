@@ -18,6 +18,8 @@ memory_limit=-1\n\
 opcache.enable_cli=1\n\
 " > $PHP_INI_DIR/php-cli.ini
 
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
 ENV COMPOSER_VERSION 1.8.5
